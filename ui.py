@@ -60,14 +60,18 @@ class Gui:
         self.player1 = HUMAN
         self.player2 = COMPUTER
 
-        self.menu = pygame_menu.Menu(300, 400, 'Othello',
-                                     theme=pygame_menu.themes.THEME_BLUE)
-        self.menu.add_button('Play', lambda: start_cb(self.player1, self.player2, self.level))
-        self.menu.add_selector('Difficulty: ', [['Medium', 2], ['Easy', 1], ('Hard', 3)],
+        self.menu = pygame_menu.Menu(
+            title='Othello',
+            width=400,
+            height=300,
+            theme=pygame_menu.themes.THEME_BLUE
+        )
+        self.menu.add.button('Play', lambda: start_cb(self.player1, self.player2, self.level))
+        self.menu.add.selector('Difficulty: ', [['Medium', 2], ['Easy', 1], ('Hard', 3)],
                                onchange=self.set_difficulty)
-        self.menu.add_selector('First player', [[HUMAN, 1] ,[COMPUTER, 2]],
+        self.menu.add.selector('First player', [[HUMAN, 1] ,[COMPUTER, 2]],
                                onchange=self.set_player_1)
-        self.menu.add_selector('Second player', [[COMPUTER, 2], [HUMAN, 1]],
+        self.menu.add.selector('Second player', [[COMPUTER, 2], [HUMAN, 1]],
                                onchange=self.set_player_2)
         self.menu.mainloop(self.screen)
 
